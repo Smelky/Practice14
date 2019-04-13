@@ -5,14 +5,15 @@ import org.apache.log4j.Logger;
 public class PhoneCreator implements Phone {
 
     private static final Logger LOGGER = Logger.getLogger(PhoneCreator.class);
-    private String processor;
-    private int ram;
-    private int memory;
-    private float screen;
-    private String chargePort;
-    private int camera;
 
-    private PhoneCreator(Creator builder) {
+    private final String processor;
+    private final int ram;
+    private final int memory;
+    private final float screen;
+    private final String chargePort;
+    private final int camera;
+
+    private PhoneCreator(Builder builder) {
         this.processor = builder.processor;
         this.ram = builder.ram;
         this.memory = builder.memory;
@@ -21,7 +22,7 @@ public class PhoneCreator implements Phone {
         this.camera = builder.camera;
     }
 
-    static class Creator {
+    static class Builder {
         private String processor;
         private int ram;
         private int memory;
@@ -29,32 +30,32 @@ public class PhoneCreator implements Phone {
         private String chargePort;
         private int camera;
 
-        public Creator processor(String processor) {
+        public Builder withProcessor(String processor) {
             this.processor = processor;
             return this;
         }
 
-        public Creator ram(int ram) {
+        public Builder withRam(int ram) {
             this.ram = ram;
             return this;
         }
 
-        public Creator memory(int memory) {
+        public Builder withMemory(int memory) {
             this.memory = memory;
             return this;
         }
 
-        public Creator screen(float screen) {
+        public Builder withScreen(float screen) {
             this.screen = screen;
             return this;
         }
 
-        public Creator chargePort(String chargePort) {
+        public Builder withChargePort(String chargePort) {
             this.chargePort = chargePort;
             return this;
         }
 
-        public Creator camera(int camera) {
+        public Builder withCamera(int camera) {
             this.camera = camera;
             return this;
         }
@@ -64,6 +65,7 @@ public class PhoneCreator implements Phone {
         }
     }
 
+    @Override
     public void getPhoneCharacters() {
         LOGGER.info("Characters of your phone");
         LOGGER.info("Processor: " + processor);

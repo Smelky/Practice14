@@ -5,14 +5,19 @@ import abstractfactory.notebookfactory.Notebook;
 
 public class TabletFactory implements Factory {
 
+    @Override
     public Tablet createTablet(String typeOfNotebook) {
-        switch (typeOfNotebook) {
-            case "Apple":
-                return new Apple();
-            case "Samsung":
-                return new Samsung();
-            default:
-                return null;
+        if (typeOfNotebook != null) {
+            switch (typeOfNotebook) {
+                case "Apple":
+                    return new Apple();
+                case "Samsung":
+                    return new Samsung();
+                default:
+                    return null;
+            }
+        } else {
+            return null;
         }
     }
 

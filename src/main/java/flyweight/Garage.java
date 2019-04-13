@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Garage {
-    Map<String, Car> carGarage = new HashMap<String, Car>();
+    private Map<String, Car> carGarage = new HashMap<String, Car>();
+
     public Car getCar(String color){
         Car car = carGarage.get(color);
         if(car == null){

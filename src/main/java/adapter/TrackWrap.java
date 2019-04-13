@@ -7,6 +7,7 @@ public class TrackWrap implements Car {
         this.track = track;
     }
 
+    @Override
     public void wash() {
         track.clean();
     }

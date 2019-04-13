@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 public class ExclusivePhone implements Phone {
     private static final Logger LOGGER = Logger.getLogger(ExclusivePhone.class);
-    private static final Object sync = new Object();
+
     private static volatile ExclusivePhone instance;
     private String processor = "Exynos 992";
     private int ram = 32;
@@ -18,16 +18,16 @@ public class ExclusivePhone implements Phone {
 
     public static ExclusivePhone getExclusivePhone() {
         if (instance == null) {
-            synchronized (sync) {
+            synchronized (ExclusivePhone.class) {
                 if (instance == null) {
                     instance = new ExclusivePhone();
                 }
             }
-
         }
         return instance;
     }
 
+    @Override
     public void getPhoneCharacters() {
         LOGGER.info("Characters of Exclusive Phone");
         LOGGER.info("Processor: " + processor);

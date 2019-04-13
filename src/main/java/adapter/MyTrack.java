@@ -6,6 +6,7 @@ public class MyTrack implements Track {
 
     private static final Logger LOGGER = Logger.getLogger(Washer.class);
 
+    @Override
     public void clean() {
     LOGGER.info("Wash track");
     }
